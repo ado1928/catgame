@@ -456,6 +456,7 @@ body {
 
 	// human plays
 	function click(use, x, y) {
+		console.log(cat.dir)
 		if (enabled && cel[y][x].stat != 2) {
 			if (x == cat.x && y == cat.y) return;
 			clicksound.currentTime = 0;
@@ -472,6 +473,7 @@ body {
 			} else {
 				cel[y][x].stat = 2;
 				cat.play();
+				enabled = true;
 			}
 		}
 	}
@@ -598,7 +600,6 @@ body {
 		},
 		// move the cat
 		jump: function (dir) {
-			enabled = false;
 			for (var i = 1; i < 6; i++) {
 				var frame = 1;
 				setTimeout(function () {
@@ -606,7 +607,6 @@ body {
 					if (frame == 6) {
 						this.px += 45 * this.dirX[dir];
 						this.py += 32 * this.dirY[dir];
-						enabled = true;
 					}
 					this.display(this.px, this.py, id);
 				}.bind(this), i * 64);
@@ -799,7 +799,7 @@ body {
 			}
 		}
 	}
-
+	window.cat = cat;
 
 	// start
 	newGame();
