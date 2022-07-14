@@ -88,9 +88,9 @@ body {
 	left: 50%;
 }
 
-#game .body {
+#cat {
 	stroke-width:5;
-	stroke:#000000;
+	stroke:black;
 	stroke-linecap:round;
 	stroke-linejoin:round;
 	stroke-miterlimit:3;
@@ -196,10 +196,10 @@ body {
 		<g id="r0" transform="matrix(1.4 0 0 1.3 25 15)">
 			<path d="M15 -7.5L15 7.5L0 15L-15 7.5L-15 -7.5L0 -15L15 -7.5" />
 		</g>
-		<g id="head1" class="head" transform="matrix(1 0 0 1 11.15 40.2)">
+		<g id="head1" class="head" transform="matrix(1 0 0 1 11.15 40.2)" stroke="none">
 			<path d="M7.25 -27.25Q6.95 -24 4.1 -22.8Q1.4 -20.15 -3 -20.5Q-5.55 -21.35 -7.95 -22.65Q-10.9 -24.3 -11.15 -27.85Q-11.35 -31.25 -9.15 -33.9Q-6.95 -36.6 -3.55 -37.05Q-0.15 -37.45 2.65 -35.55Q5.45 -33.6 6.7 -30.45Q7.4 -28.95 7.25 -27.25 M2.35 -40.15Q4.05 -40.6 5.85 -33.7Q6.4 -31.55 6.35 -30.85L5.1 -30.5Q2.45 -31.6 0.95 -32.6Q-1.1 -33.95 -1.9 -35.55L-1.8 -35.6L-1.7 -35.8L-0.95 -35.6L-0.6 -35.45L0.45 -37.8Q1.55 -39.95 2.35 -40.15M-10.7 -35.5L-10.25 -39.95Q-8.95 -39.25 -7.85 -38.35Q-6.05 -36.95 -5.7 -35.8Q-5.35 -34.35 -6.85 -32.8Q-8.1 -31.4 -9.8 -30.8Q-10.75 -32.55 -10.7 -35.5" />
 		</g>
-		<g id="head2" class="head" transform="matrix(1 0 0 1 13.5 40.55)">
+		<g id="head2" class="head" transform="matrix(1 0 0 1 13.5 40.55)" stroke="none">
 			<path d="M1.65 -26.85L0.5 -25.5Q-0.2 -25 -1.5 -24.85L-4.2 -24.15L-6.5 -24.25Q-8.6 -23.9 -10.55 -24.95Q-13.2 -26.65 -13.5 -29.85L-12.05 -31.1Q-11.95 -33.7 -10.2 -35.5Q-9.15 -36.75 -7.75 -37.15L-7.35 -40.55Q-0.9 -35.6 1.05 -33.65Q4.2 -30.55 1.65 -26.85" />
 		</g>
 		<g id="b1-1" class="body" transform="matrix(1 0 0 1 12.35 33.05)">
@@ -296,7 +296,6 @@ body {
 		<g id="f52" transform="scale(-1,1) translate(-36,-14)"><use xlink:href = "#b3-3"/><use x="-1" y="-12" xlink:href = "#head1"/></g>
 		<g id="f53" transform="scale(-1,1) translate(-38,-16)"><use xlink:href = "#b3-4"/><use x="-5.5" y="-8" xlink:href = "#head1"/></g>
 		<g id="f54" transform="scale(-1,1) translate(-42,-22)"><use xlink:href = "#b3-5"/><use x="-4" y="-5" xlink:href = "#head1"/></g>
-		
 		<g display="inline" id="musicon" transform="matrix(1.08717, 0, 0, 1.08717, -155.773, 195.33)">
 			<path fill-rule="nonzero" fill="#000000" d="m301.42856,-103.66811l372.68414,-76l0,103.92858l-372.68414,76l0,-103.92858z" id="rect4002"  />
 			<rect fill-rule="nonzero" fill="#000000" id="rect3964" width="60" height="388.5" x="301.42856" y="-103.74847"/>
@@ -315,7 +314,7 @@ body {
 			  <path fill-rule="nonzero" fill="#000000"  id="path4005-7"     d="m672.16237,205.92528c10.72064,40.00996 -23.83455,84.03216 -77.18115,98.32634c-53.34661,14.29418 -105.28338,-6.55257 -116.00401,-46.56253c-10.72064,-40.00996 23.83455,-84.03216 77.18115,-98.32634c53.34661,-14.29418 105.28338,6.55257 116.00401,46.56253z"/>
 			 </g>
 			</g>
-			<line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_1" y2="574" x2="571.99999" y1="39" x1="37" stroke-width="64" stroke="#000" fill="none"/>
+			<line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_1" y2="574" x2="571.99999" y1="39" x1="37" stroke-width="64" stroke="#000" />
 		   </g>
 		</defs>
 	<g id="board" />
@@ -418,7 +417,7 @@ body {
 		}
 		return false;
 	}
-	var enabled = true, win = false;
+	var enabled = true, win = false, won = false;
 	var addx0, addy0, addx1, addy1, cel, lx, ly, ld, lmax, lx2, ly2;
 
 	
@@ -476,6 +475,7 @@ body {
 			use.setAttributeNS(null, "fill", "#728501");
 			if (win) {
 				// run the cat, run!
+				won = true;
 				cat.play();
 				runsound.currentTime = 0;
 				runsound.play();
@@ -483,7 +483,6 @@ body {
 			} else {
 				cel[y][x].stat = 2;
 				cat.play();
-				enabled = true;
 			}
 		}
 	}
@@ -491,7 +490,7 @@ body {
 	// initialize new game
 	function newGame () {
 		win = false;
-		
+		won = false;
 		addx0 = [1, 0, -1, -1, -1, 0];
 		addy0 = [0, 1, 1, 0, -1, -1];
 		addx1 = [1, 1, 0, -1, 0, 1];
@@ -617,6 +616,8 @@ body {
 					if (frame == 6) {
 						this.px += 45 * this.dirX[dir];
 						this.py += 32 * this.dirY[dir];
+						
+						enabled = !won;
 					}
 					this.display(this.px, this.py, id);
 				}.bind(this), i * 64);
@@ -629,6 +630,7 @@ body {
 			var end = 0;
 			for (var i = 1; i < 12; i++) {
 				setTimeout(function () {
+					enabled = false;
 					var id = "f" + dir + frame++;
 					//if (frame == 0) frame++;
 					if (frame == 5) frame = 2;
