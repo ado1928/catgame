@@ -7,3 +7,5 @@ This version is a cleaned up version of the original. Performance and memory iss
 TODO:
 - Fix the cat on Firefox
 - Perhaps some kind of a menu with levels
+
+You can play it here: https://ulovi.ga
